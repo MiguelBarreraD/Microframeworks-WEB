@@ -1,0 +1,72 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin: 0; 
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 300;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input[type=text] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button[type=submit] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#resultTable {
+    margin-top: 40px;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+}
+
+#resultTable th,
+#resultTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+#resultTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#movieForm:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+button[type=submit]:hover {
+    background-color: #0062cc;
+}
