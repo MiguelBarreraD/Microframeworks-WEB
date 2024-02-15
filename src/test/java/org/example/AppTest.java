@@ -1,38 +1,65 @@
 package org.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.junit.Before;
+
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+    
+    HttpServer server;
+
+    @Before
+    public void setup() {
+        server = HttpServer.getInstance();
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    @Test
+    public void shouldResponseHtmlFiles() {
+        byte[] response = null;
+        try {
+            URI uri = new URI("/index.html");
+            response = server.httpOkResponseBody(uri);
+        } catch (IOException | URISyntaxException e ) {
+            e.printStackTrace();
+        }
+        assertNotNull(response);
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void shouldResponseCssFiles() {
+        byte[] response = null;
+        try {
+            URI uri = new URI("/css/styles.css");
+            response = server.httpOkResponseBody(uri);
+        } catch (IOException | URISyntaxException e ) {
+            e.printStackTrace();
+        }
+        assertNotNull(response);
     }
+
+
+    @Test
+    public void shouldNotResponseHtmlFiles() {
+        byte[] response = null;
+        try {
+            URI uri = new URI("/dontExist.html");
+            response = server.httpOkResponseBody(uri);
+        } catch (IOException | URISyntaxException e ) {
+            e.printStackTrace();
+        }
+        assertNull(response);
+    }
+
 }

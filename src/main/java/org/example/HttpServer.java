@@ -207,7 +207,8 @@ public class HttpServer {
      * @return Arreglo de bytes que representa el cuerpo.
      * @throws IOException Si hay un problema de entrada/salida.
      */
-    private static byte[] httpOkResponseBody(URI requestUri) throws IOException {
+    public byte[] httpOkResponseBody(URI requestUri) throws IOException {
+        System.out.println("ESTA ES LA URI QUE LE ESTA LLEGANDO AL RESPONSE BODY" + requestUri);
         Path file = Paths.get("target/classes/resources/public" + requestUri.getPath());
         String contentType = getContentType(requestUri.getPath());
         if (contentType.equals("image/jpeg")) {
@@ -225,7 +226,7 @@ public class HttpServer {
      * @return Arreglo de bytes que representa la imagen.
      * @throws IOException Si hay un problema de entrada/salida.
      */
-    static byte[] convertImageToBytes(Path imagePath) throws IOException {
+    public static byte[] convertImageToBytes(Path imagePath) throws IOException {
         BufferedImage image = ImageIO.read(imagePath.toFile());
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, "jpg", baos);
