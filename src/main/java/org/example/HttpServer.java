@@ -208,14 +208,13 @@ public class HttpServer {
      * @throws IOException Si hay un problema de entrada/salida.
      */
     public byte[] httpOkResponseBody(URI requestUri) throws IOException {
-        System.out.println("ESTA ES LA URI QUE LE ESTA LLEGANDO AL RESPONSE BODY" + requestUri);
-        Path file = Paths.get("target/classes/resources/public" + requestUri.getPath());
+        Path file = Paths.get("target/classes/public" + requestUri.getPath());
         String contentType = getContentType(requestUri.getPath());
         if (contentType.equals("image/jpeg")) {
             byte[] imageBytes = convertImageToBytes(file);
             return imageBytes;
         } else {
-            return Files.readAllBytes(Paths.get("target/classes/resources/public" + requestUri.getPath()));
+            return Files.readAllBytes(Paths.get("target/classes/public" + requestUri.getPath()));
         }
     }
 

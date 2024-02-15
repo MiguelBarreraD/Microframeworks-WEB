@@ -3,7 +3,7 @@ package org.example;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import org.example.API.MovieAPI;
+import org.example.MovieAPI;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
